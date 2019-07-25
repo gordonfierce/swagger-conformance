@@ -137,10 +137,17 @@ class StringStrategy(PrimitiveStrategy):
         alphabet = None
         if self._blacklist_chars:
             alphabet = hy_st.characters(
-                blacklist_characters=self._blacklist_chars)
-        strategy = hy_st.text(alphabet=alphabet,
-                              min_size=self._min_length,
-                              max_size=self._max_length)
+                blacklist_characters=self._blacklist_chars
+            )
+            strategy = hy_st.text(
+                alphabet=alphabet,
+                min_size=self._min_length,
+                max_size=self._max_length,
+            )
+        else:
+            strategy = hy_st.text(
+                min_size=self._min_length, max_size=self._max_length
+            )
 
         return strategy
 
